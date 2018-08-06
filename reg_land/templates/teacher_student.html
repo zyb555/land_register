@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <div>
+            <table border="1">
+                <tr>
+                    <th>序号</th>
+                    <th>名字</th>
+                    <th>生日</th>
+                    <th>性别</th>
+                    <th>婚姻状态</th>
+                </tr>
+                {% for t in tea %}
+                    <tr>
+                        <td>{{ t.id }}</td>
+                        <td>{{ t.name }}</td>
+                        <td>{{ t.birth }}</td>
+                        {% if t.gender == 1 %}
+                            <td>男</td>
+                        {% else %}
+                            <td>女</td>
+                        {% endif %}
+                        {% if t.is_married == 1 %}
+                            <td>已婚</td>
+                        {% else %}
+                            <td>未婚</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div style="margin-top: 50px">
+            <div>
+                {% for foo in s %}
+                        {{ foo }},
+                {% endfor %}
+            </div>
+            <div>
+                {{ ss }}
+            </div>
+            <div>
+                <form action="{% url 'reg_land:teacher_student' %}" method="get">
+                    <input type="text" name="tea_num" placeholder="请输入老师的序号">
+                    <button type="submit">查看老师的学生</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <form action="{% url 'reg_land:delete_teacher' %}" method="get">
+                <input type="text" name="dellete" placeholder="请输入老师的序号">
+                <button type="submit">删除老师</button>
+            </form>
+            <div>{{ dele }}</div>
+        </div>
+        <div>
+            <a href="{% url 'reg_land:add_teacher_page' %}">增加老师</a>
+        </div>
+        <div>
+            <a href="{% url 'reg_land:revise_teacher_page' %}">修改老师信息</a>
+        </div>
+    </body>
+</html>

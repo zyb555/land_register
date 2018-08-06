@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <div>
+            <form action="{% url 'reg_land:add_student' %}" method="get">
+                <input type="text" name="uname" placeholder="请输入学生的名字">
+                <br>
+                <input type="text" name="ubirth" placeholder="请输入学生的生日">
+                <br>
+                <input type="radio" name="ugender" value="1">男
+                <input type="radio" name="ugender" value="0">女
+                <br>
+                <button type="submit">提交</button>
+            </form>
+        </div>
+        <div>
+            {{ point_out }}
+        </div>
+        <h1>
+            <a href="{% url 'reg_land:student_show' %}">返回查看学生信息</a>
+        </h1>
+    </body>
+</html>

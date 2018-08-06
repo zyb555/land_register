@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            a{
+                text-decoration: none;
+            }
+            /* 图标位置  */
+            #icon{
+                position: absolute;
+                top: 30%;
+                left: 40%;
+
+            }
+
+            /* 蓝色背景色位置  */
+            #background_colour_blue{
+                width: 50%;
+                height: 635px;
+                background-color: rgb(0,141,225);
+            }
+
+            /* 注册按钮  */
+            #register{
+                border: 0;
+                width: 100px;
+                height: 50px;
+                background-color: rgb(0,141,225);
+                position: absolute;
+                top: 20%;
+                left: 46%;
+            }
+            /* 登陆按钮  */
+            #land{
+                border: 0;
+                width: 100px;
+                height: 50px;
+                background-color: rgb(255,255,255);
+                position: absolute;
+                top:70%;
+                left: 46%;
+            }
+            /* 注册 灰色背景色  */
+            #register_form_white_background_1{
+                position: relative;
+                background-color: rgba(195,191,186,0.6);
+                width: 70%;
+                height: 600px;
+                margin-left: 70px;
+                animation: show_tips_1 2s linear;
+            }
+            /* 注册 灰色背景色 (向下移动)  */
+            @keyframes show_tips_1 {
+                from {top:-600px;}
+                to {top:0px;}
+            }
+            /* 注册 灰色背景色 (隐藏) */
+            #register_form_white_background_2{
+                position: relative;
+                background-color: rgba(195,191,186,0.6);
+                width: 70%;
+                top: -600px;
+                height: 600px;
+                margin-left: 70px;
+                animation: show_tips_2 2s linear;
+            }
+            /* 注册 灰色背景色 (向上移动)  */
+            @keyframes show_tips_2 {
+                from {top:0px;}
+                to {top:-600px;}
+            }
+
+            #register_form_white_background_3{
+                position: relative;
+                background-color: rgba(195,191,186,0.6);
+                width: 70%;
+                top: -600px;
+                height: 600px;
+                margin-left: 70px;
+            }
+
+
+            /* 注册form 移动 */
+            #register_form{
+                position: absolute;
+                top: 100px;
+                left: 50px;
+            }
+            /* 注册form 3个框  */
+            .register_form{
+                text-indent: 10px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                width: 300px;
+                height: 30px;
+            }
+            /* 注册按钮  */
+            #register_but{
+                width: 100px;
+                height: 50px;
+                background-color: rgb(220,220,220);
+                margin-left: 15px;
+                margin-top: 40px;
+            }
+            /* 取消注册按钮  */
+            #register_cancel{
+                width: 100px;
+                height: 50px;
+                background-color: rgb(220,220,220);
+                margin-left: 58px;
+            }
+
+
+            #background_colour_white{
+                position: relative;
+            }
+            /* 登陆form  */
+            #land_form{
+                position: absolute;
+                right: 18%;
+                bottom: 200px;
+            }
+            .land_form{
+                text-indent: 10px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                width: 300px;
+                height: 30px;
+            }
+            #land_but{
+                border: 0;
+                width: 100px;
+                height: 50px;
+                background-color: rgb(117,170,201);
+                margin-left: 80px;
+                margin-top: 40px;
+            }
+            #land_cancel{
+                border: 0;
+                width: 100px;
+                height: 50px;
+                margin-left: 40px;
+                background-color: rgb(117,170,201);
+            }
+
+            #background_colour_white{
+                position: absolute;
+                top: 0px;
+                right: 70px;
+                background-color: rgba(117,170,201,0.6);
+                width: 35%;
+                top: -600px;
+                height: 600px;
+                margin-left: 70px;
+            }
+
+            #background_colour_white_1{
+                position: absolute;
+                top: 0px;
+                right: 70px;
+                background-color: rgba(117,170,201,0.6);
+                width: 35%;
+                height: 600px;
+                margin-left: 70px;
+                animation: landing_down_1 2s linear;
+            }
+
+            @keyframes landing_down_1 {
+                from {top:-600px;}
+                to {top:0px;}
+            }
+
+
+            #background_colour_white_2{
+                position: absolute;
+                top: 0px;
+                right: 70px;
+                background-color: rgba(117,170,201,0.6);
+                width: 35%;
+                top: -600px;
+                height: 600px;
+                margin-left: 70px;
+                animation: landing_down_2 2s linear;
+            }
+
+            @keyframes landing_down_2 {
+                from {top:0px;}
+                to {top:-600px;}
+            }
+
+            #register_point_out{
+                color: red;
+                margin-left: 100px;
+                position: absolute;
+                top: 50px;
+            }
+
+            #land_point_out{
+                color: red;
+                margin-left: 100px;
+                position: absolute;
+                top: 50px;
+            }
+            .p{
+                margin-left: 50px;
+            }
+            #land_point_out{
+                margin-left: 800px;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="background_colour_blue">
+			<div id="register_form_white_background_3">
+				<div id="register_form">
+					<form action="{% url 'reg_land:register' %}" method="post">
+                        {% csrf_token %}
+						<p>
+							账号:<input type="text" name="firstname" id="register_un" class="register_form" placeholder="请输入账号"/>
+						</p>
+						<p>
+							密码:<input type="password" name="password" id="register_pwd" class="register_form" placeholder="请输入密码"/>
+						</p>
+						<p>
+							邮箱:<input type="text" name="email" id="register_em" class="register_form" placeholder="请输入邮箱"/>
+						</p>
+
+						<p>
+							<button id="register_but" type="submit">注册</button>
+							<button id="register_cancel" type="button">取消注册</button>
+						</p>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+        <div id="register_point_out">{{ register_point_out }}</div>
+		<div>
+			<button type="button" id="register">注册</button>
+			<button type="button" id="land">登陆</button>
+		</div>
+            <div id="background_colour_white">
+			<div id="land_form">
+				<form action="{% url 'reg_land:land' %}" method="post">
+					<p class="p">
+						账号:<input type="text" name="land_name" id="land_pwd" class="land_form" placeholder="请输入密码"/>
+					</p>
+					<p class="p">
+						密码:<input type="password" name="land_pwd" id="land_em" class="land_form" placeholder="请输入邮箱"/>
+					</p>
+
+					<p>
+						<button id="land_but" type="submit">登陆</button>
+						<button id="land_cancel" type="button">取消登陆</button>
+					</p>
+				</form>
+			</div>
+		</div>
+        <div id="land_point_out">{{ land_point_out }}</div>
+	</body>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        // 点击注册
+        $('#register').click(function(){
+            $('#register_form_white_background_2').attr('id','register_form_white_background_1')
+            $('#register_form_white_background_3').attr('id','register_form_white_background_1')
+
+            $("#register").attr('disabled','disabled');
+            $("#land").attr('disabled','disabled');
+            $('#register_point_out').html('');
+            $('#land_point_out').html('');
+            $('input').val('');
+        })
+        // 取消注册
+        $('#register_cancel').click(function(){
+            $('#register_form_white_background_1').attr('id','register_form_white_background_2')
+
+            $("#register").removeAttr("disabled");
+            $("#land").removeAttr("disabled");
+
+
+        })
+
+        // 点击登陆
+        $("#land").click(function(){
+            $('#background_colour_white').attr('id','background_colour_white_1');
+            $('#background_colour_white_2').attr('id','background_colour_white_1');
+
+            $("#register").attr('disabled','disabled');
+            $("#land").attr('disabled','disabled');
+            $('#land_point_out').html('');
+            $('#register_point_out').html('');
+            $('input').val('');
+        })
+
+        // 取消登陆
+        $("#land_cancel").click(function(){
+            $('#background_colour_white_1').attr('id','background_colour_white_2');
+
+            $("#register").removeAttr("disabled");
+            $("#land").removeAttr("disabled");
+        })
+
+    </script>
+</html>

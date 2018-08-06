@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <div>
+            <h1 style="color: red">{{ land_point_out }}</h1>
+        </div>
+        <div>点击查看本校老师信息<a href="{% url 'reg_land:teacher_student' %}">去查看</a></div>
+        <div>点击查看本校学生信息<a href="{% url 'reg_land:student_show' %}">去查看</a></div>
+    </body>
+</html>
