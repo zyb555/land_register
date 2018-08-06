@@ -177,3 +177,7 @@ def revise_student(request):
     except Exception:
         return render(request, 'revise_student_page.html', {'rev': '修改失败!请认真输入 '})
 
+
+def text():
+    print('sadsa')
+
